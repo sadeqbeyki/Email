@@ -1,5 +1,6 @@
 ﻿using Email.MailC.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace Email.MailC
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            var userStore = new UserStore<IdentityUser>();
+            var userManager = new UserManager<IdentityUser>(userStore);
+            var users = userManager.Users.ToList();
             if (!IsPostBack)
             {
                 if (User.Identity.IsAuthenticated)
@@ -22,18 +26,34 @@ namespace Email.MailC
                     LoginStatus.Visible = true;
                     LogoutButton.Visible = true;
                     SenderUserName.Text = User.Identity.GetUserName();
-                   
+
+
                 }
                 else
                 {
                     Response.Redirect("~/Login.aspx");
                 }
+
+                ReceiverDropDownList.DataSource = users;
+                ReceiverDropDownList.DataTextField = "Username";
+                ReceiverDropDownList.DataValueField = "Username";
+                ReceiverDropDownList.DataBind();
+
+                ReceiverUserName.Text = ReceiverDropDownList.SelectedValue;
+
             }
         }
 
         protected void SendMessage_Click(object sender, EventArgs e)
         {
-            // بررسی صحت ورودی‌ها
+            var selectedReceiverUsername = ReceiverUserName.Text;
+            var userStore = new UserStore<IdentityUser>();
+            var userManager = new UserManager<IdentityUser>(userStore);
+            var users = userManager.Users.ToList();
+
+            var receiver = users.FirstOrDefault(u => u.UserName == selectedReceiverUsername);
+
+            // validation
             if (string.IsNullOrEmpty(SenderUserName.Text) || string.IsNullOrEmpty(ReceiverUserName.Text) || string.IsNullOrEmpty(MessageText.Text))
             {
                 //return stat;
@@ -41,24 +61,29 @@ namespace Email.MailC
             }
             else
             {
-                // ساخت شیی Message برای ذخیره در دیتابیس
+   
                 Message newMessage = new Message();
                 newMessage.SenderUsername = SenderUserName.Text;
-                newMessage.ReceiverUsername = ReceiverUserName.Text;
+                newMessage.ReceiverUsername = selectedReceiverUsername;
+                newMessage.Subject = Subject.Text;
                 newMessage.MessageText = MessageText.Text;
                 newMessage.SentDate = DateTime.Now;
-
-                // افزودن شیی جدید به دیتابیس
+                newMessage.SenderId = User.Identity.GetUserId();
+                if (receiver != null)
+                {
+                    newMessage.ReceiverId = receiver.Id;
+                }
+                // send new mail
                 using (var context = new MessageContext())
                 {
                     context.Messages.Add(newMessage);
                     context.SaveChanges();
                 }
 
-                // پاک کردن متن پیام
+                // clean message box
                 MessageText.Text = "";
 
-                // نمایش پیام موفقیت‌آمیز برای کاربر
+                // Done!
                 StatusMessage.Text = "ارسال پیام موفقیت آمیز بود.";
                 StatusMessage.Visible = true;
             }

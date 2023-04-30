@@ -20,6 +20,7 @@
                     <asp:Literal runat="server" ID="StatusMessage" />
                 </p>
             </asp:PlaceHolder>
+
             <div style="margin-bottom: 10px">
                 <asp:Label runat="server" AssociatedControlID="SenderUserName">Sender</asp:Label>
                 <div>
@@ -30,6 +31,16 @@
                 <asp:Label runat="server" AssociatedControlID="ReceiverUsername">Receiver</asp:Label>
                 <div>
                     <asp:TextBox runat="server" ID="ReceiverUserName" />
+                    <asp:DropDownList ID="ReceiverDropDownList" runat="server" />
+
+                </div>
+            </div>
+
+
+            <div style="margin-bottom: 10px">
+                <asp:Label runat="server" AssociatedControlID="Subject">Subject</asp:Label>
+                <div>
+                    <asp:TextBox runat="server" ID="Subject" />
                 </div>
             </div>
             <div style="margin-bottom: 10px">
