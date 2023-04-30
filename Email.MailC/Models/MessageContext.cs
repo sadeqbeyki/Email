@@ -10,7 +10,7 @@ namespace Email.MailC.Models
     {
         public DbSet<Message> Messages { get; set; }
 
-        public MessageContext() : base("name=MessageContext")
+        public MessageContext() : base("name=DefaultConnection")
         {
         }
     }

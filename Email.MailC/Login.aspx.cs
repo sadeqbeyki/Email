@@ -18,7 +18,7 @@ namespace Email.MailC
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    StatusText.Text = string.Format("Hello {0}!!", User.Identity.GetUserName());
+                    StatusText.Text = string.Format("سلام {0}!!", User.Identity.GetUserName());
                     LoginStatus.Visible = true;
                     LogoutButton.Visible = true;
                 }
@@ -45,7 +45,7 @@ namespace Email.MailC
             }
             else
             {
-                StatusText.Text = "Invalid username or password.";
+                StatusText.Text = "نام کاربری یا گذرواژه اشتباه است.";
                 LoginStatus.Visible = true;
             }
         }

@@ -21,13 +21,13 @@
                 </p>
             </asp:PlaceHolder>
             <div style="margin-bottom: 10px">
-                <asp:Label runat="server" AssociatedControlID="UserName">Sender</asp:Label>
+                <asp:Label runat="server" AssociatedControlID="SenderUserName">Sender</asp:Label>
                 <div>
                     <asp:TextBox runat="server" ID="SenderUserName" />
                 </div>
             </div>
             <div style="margin-bottom: 10px">
-                <asp:Label runat="server" AssociatedControlID="UserName">Receiver</asp:Label>
+                <asp:Label runat="server" AssociatedControlID="ReceiverUsername">Receiver</asp:Label>
                 <div>
                     <asp:TextBox runat="server" ID="ReceiverUserName" />
                 </div>

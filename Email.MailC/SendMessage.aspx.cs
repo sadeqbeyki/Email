@@ -11,34 +11,7 @@ namespace Email.MailC
 {
     public partial class SendMessage : System.Web.UI.Page
     {
-        protected void SendMessage_Click(object sender, EventArgs e)
-        {
-            // بررسی صحت ورودی‌ها
-            if (string.IsNullOrEmpty(SenderUserName.Text) || string.IsNullOrEmpty(ReceiverUserName.Text) || string.IsNullOrEmpty(MessageText.Text))
-            {
-                return;
-            }
 
-            // ساخت شیی Message برای ذخیره در دیتابیس
-            Message newMessage = new Message();
-            newMessage.SenderUsername = SenderUserName.Text;
-            newMessage.ReceiverUsername = ReceiverUserName.Text;
-            newMessage.MessageText = MessageText.Text;
-            newMessage.SentDate = DateTime.Now;
-
-            // افزودن شیی جدید به دیتابیس
-            using (var context = new MessageContext())
-            {
-                context.Messages.Add(newMessage);
-                context.SaveChanges();
-            }
-
-            // پاک کردن متن پیام
-            MessageText.Text = "";
-
-            // نمایش پیام موفقیت‌آمیز برای کاربر
-            StatusMessage.Visible = true;
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -48,12 +21,48 @@ namespace Email.MailC
                     StatusText.Text = string.Format("Hello {0}!!", User.Identity.GetUserName());
                     LoginStatus.Visible = true;
                     LogoutButton.Visible = true;
+                    SenderUserName.Text = User.Identity.GetUserName();
+                   
                 }
                 else
                 {
                     Response.Redirect("~/Login.aspx");
                 }
             }
+        }
+
+        protected void SendMessage_Click(object sender, EventArgs e)
+        {
+            // بررسی صحت ورودی‌ها
+            if (string.IsNullOrEmpty(SenderUserName.Text) || string.IsNullOrEmpty(ReceiverUserName.Text) || string.IsNullOrEmpty(MessageText.Text))
+            {
+                //return stat;
+                StatusMessage.Text = "تمام فیلد ها را پر کنید";
+            }
+            else
+            {
+                // ساخت شیی Message برای ذخیره در دیتابیس
+                Message newMessage = new Message();
+                newMessage.SenderUsername = SenderUserName.Text;
+                newMessage.ReceiverUsername = ReceiverUserName.Text;
+                newMessage.MessageText = MessageText.Text;
+                newMessage.SentDate = DateTime.Now;
+
+                // افزودن شیی جدید به دیتابیس
+                using (var context = new MessageContext())
+                {
+                    context.Messages.Add(newMessage);
+                    context.SaveChanges();
+                }
+
+                // پاک کردن متن پیام
+                MessageText.Text = "";
+
+                // نمایش پیام موفقیت‌آمیز برای کاربر
+                StatusMessage.Text = "ارسال پیام موفقیت آمیز بود.";
+                StatusMessage.Visible = true;
+            }
+
         }
 
         protected void SignOut(object sender, EventArgs e)
