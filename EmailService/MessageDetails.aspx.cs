@@ -49,5 +49,40 @@ namespace EmailService
                 }
             }
         }
+
+        protected void SignOut(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("~/Login.aspx");
+        }
+
+        protected void DeleteMessage(object sender, EventArgs e)
+        {
+            string messageIdString = Request.QueryString["messageId"];
+
+            if (!string.IsNullOrEmpty(messageIdString))
+            {
+                int messageId = int.Parse(messageIdString);
+
+                // Load the message details from the database
+                using (var context = new MessageContext())
+                {
+                    var message = context.Messages.FirstOrDefault(m => m.MessageId == messageId);
+
+                    if (message != null)
+                    {
+                        context.Messages.Remove(message);   
+                        context.SaveChanges();
+                        Response.Redirect("~/Inbox.aspx");
+                    }
+                    else
+                    {
+                        // The message ID was not valid
+                        StatusText.Text = "Invalid message ID.";
+                    }
+                }
+            }
+        }
     }
 }

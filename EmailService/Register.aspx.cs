@@ -39,5 +39,6 @@ namespace EmailService
                 StatusMessage.Text = result.Errors.FirstOrDefault();
             }
         }
+
     }
 }

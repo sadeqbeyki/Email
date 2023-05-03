@@ -63,5 +63,12 @@ namespace EmailService
             InboxGridView.PageIndex = e.NewPageIndex;
             LoadInbox();
         }
+
+        protected void SignOut(object sender, EventArgs e)
+        {
+            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            Response.Redirect("~/Login.aspx");
+        }
     }
 }

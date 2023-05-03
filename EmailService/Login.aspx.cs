@@ -48,7 +48,7 @@ namespace EmailService
             }
             else
             {
-                StatusText.Text = "Invalid username or password.";
+                StatusText.Text = "ایمیل یا پسورد اشتباه است";
                 LoginStatus.Visible = true;
             }
         }
