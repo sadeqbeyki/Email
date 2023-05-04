@@ -72,7 +72,8 @@ namespace EmailService
 
                     if (message != null)
                     {
-                        context.Messages.Remove(message);   
+                        //context.Messages.Remove(message);   
+                        message.IsDeletedSendbox = true;
                         context.SaveChanges();
                         Response.Redirect("~/Inbox.aspx");
                     }

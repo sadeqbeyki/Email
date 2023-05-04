@@ -33,7 +33,7 @@ namespace EmailService
                 if (currentUser != null)
                 {
                     var receivedMessages = context.Messages
-                        .Where(msg => msg.SenderId == currentUser.Id)
+                        .Where(msg => msg.SenderId == currentUser.Id && !msg.IsDeletedSendbox)
                         .OrderByDescending(m => m.SentDate).ToList();
 
                     SendboxGridView.DataSource = receivedMessages;
