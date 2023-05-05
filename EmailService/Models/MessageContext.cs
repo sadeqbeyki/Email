@@ -13,5 +13,6 @@ namespace EmailService.Models
         public MessageContext() : base("name=DefaultConnection")
         {
         }
+
     }
 }
