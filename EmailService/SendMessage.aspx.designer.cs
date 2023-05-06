@@ -15,15 +15,6 @@ namespace EmailService
     {
 
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
         /// LoginStatus control.
         /// </summary>
         /// <remarks>
@@ -57,7 +48,7 @@ namespace EmailService
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SenderUserName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText SenderUserName;
 
         /// <summary>
         /// ReceiverUserName control.
@@ -66,7 +57,7 @@ namespace EmailService
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ReceiverUserName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText ReceiverUserName;
 
         /// <summary>
         /// ReceiverDropDownList control.
@@ -75,7 +66,7 @@ namespace EmailService
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ReceiverDropDownList;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText ReceiverDropDownList;
 
         /// <summary>
         /// Subject control.
@@ -84,24 +75,6 @@ namespace EmailService
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Subject;
-
-        /// <summary>
-        /// MessageText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox MessageText;
-
-        /// <summary>
-        /// LogoutButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder LogoutButton;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Subject;
     }
 }
