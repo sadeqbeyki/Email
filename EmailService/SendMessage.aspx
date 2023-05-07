@@ -4,6 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
     <title>ارسال پیام</title>
 </head>
 <body>
@@ -29,43 +32,54 @@
 
 
                     <div class="wrap-input100 validate-input" data-validate="Sender UserName is required">
-                        <input runat="server" id="SenderUserName" class="input100" type="text" name="senderusername" placeholder="SenderUserName" />
+                        <asp:Label runat="server" AssociatedControlID="SenderUserName">Sender</asp:Label>
+                        <asp:TextBox runat="server" ID="SenderUserName" class="input100" type="text" name="senderusername" placeholder="SenderUserName" />
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Receiver UserName is required">
-                        <input runat="server" id="ReceiverUserName" class="input100" type="text" name="receiverusername" placeholder="ReceiverUserName" />
+                        <asp:Label runat="server" AssociatedControlID="ReceiverUsername">Receiver</asp:Label>
+                        <div>
+                            <asp:TextBox runat="server" ID="ReceiverUserName" />
+                            <asp:DropDownList ID="ReceiverDropDownList" runat="server" />
+
+                        </div>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="DropDownList UserName is required">
-                        <input runat="server" id="ReceiverDropDownList" class="input100" type="text" name="username" placeholder="UserName" />
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                        </span>
-                    </div>
+
                     <div class="wrap-input100 validate-input" data-validate="Subject is required">
-                        <input runat="server" id="Subject" class="input100" type="text" name="subject" placeholder="Subject" />
+                        <asp:TextBox runat="server" ID="Subject" class="input100" type="text" name="subject" placeholder="Subject" />
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Message is required">
-                        <textarea runat="server" class="input100" name="MessageText" placeholder="MessageText"></textarea>
+                        <asp:Label AssociatedControlID="MessageText" runat="server">Message</asp:Label>
+                        <div>
+                            <asp:TextBox runat="server" ID="MessageText" TextMode="MultiLine" />
+                        </div>
                         <span class="focus-input100"></span>
                     </div>
+
                     <div class="container-contact100-form-btn">
-                        <button runat="server" onclick="SendMessage_Click" class="contact100-form-btn">ارسال</button>
+                        <asp:Button runat="server" onclick="SendMessage_Click" class="contact100-form-btn" Text="ارسال" />
                     </div>
                     <div class="container-contact100-form-btn">
-                        <button runat="server" onclick="LogoutButton" class="contact100-form-btn">خروج</button>
+                        <asp:PlaceHolder runat="server" ID="LogoutButton" Visible="false">
+                            <div>
+                                <div>
+                                    <asp:Button runat="server" OnClick="SignOut" class="contact100-form-btn" Text="خروج" />
+                                </div>
+                            </div>
+                        </asp:PlaceHolder>
                     </div>
+
                 </form>
             </div>
         </div>

@@ -48,7 +48,7 @@ namespace EmailService
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText SenderUserName;
+        protected global::System.Web.UI.WebControls.TextBox SenderUserName;
 
         /// <summary>
         /// ReceiverUserName control.
@@ -57,7 +57,7 @@ namespace EmailService
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText ReceiverUserName;
+        protected global::System.Web.UI.WebControls.TextBox ReceiverUserName;
 
         /// <summary>
         /// ReceiverDropDownList control.
@@ -66,7 +66,7 @@ namespace EmailService
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText ReceiverDropDownList;
+        protected global::System.Web.UI.WebControls.DropDownList ReceiverDropDownList;
 
         /// <summary>
         /// Subject control.
@@ -75,6 +75,24 @@ namespace EmailService
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Subject;
+        protected global::System.Web.UI.WebControls.TextBox Subject;
+
+        /// <summary>
+        /// MessageText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox MessageText;
+
+        /// <summary>
+        /// LogoutButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder LogoutButton;
     }
 }
