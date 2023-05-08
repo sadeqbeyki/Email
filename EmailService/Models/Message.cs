@@ -16,7 +16,7 @@ namespace EmailService.Models
         public string SenderUsername { get; set; }
         public string ReceiverId { get; set; }
         public string ReceiverUsername { get; set; }
-        //public bool IsDeletedSendbox { get; set; } = false;
-        //public bool IsDeletedInbox { get; set; } = false;
+        public bool IsDeletedSendbox { get; set; } = false;
+        public bool IsDeletedInbox { get; set; } = false;
     }
 }

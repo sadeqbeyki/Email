@@ -11,16 +11,16 @@ using System.Drawing.Printing;
 
 namespace EmailService
 {
-    public partial class Inbox : System.Web.UI.Page
+    public partial class Trash : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                LoadInbox();
+                LoadTrash();
             }
         }
-        private void LoadInbox()
+        private void LoadTrash()
         {
             var userStore = new UserStore<IdentityUser>();
             var userManager = new UserManager<IdentityUser>(userStore);
@@ -33,49 +33,39 @@ namespace EmailService
                 if (currentUser != null)
                 {
                     var receivedMessages = context.Messages
-                     .Where(msg => msg.ReceiverId == currentUser.Id && msg.IsDeletedInbox == false)
-                     .OrderByDescending(m => m.SentDate).ToList();
+                        .Where(msg => msg.ReceiverId == currentUser.Id && msg.IsDeletedInbox == true)
+                        .OrderByDescending(m => m.SentDate).ToList();
 
-                    if (receivedMessages.Count != 0)
-                    {
-                        StatusText.Text = "پیامهای دریافتی";
-                        InboxGridView.DataSource = receivedMessages;
-                        InboxGridView.DataBind();
-                    }
-                    else
-                    {
-                        StatusText.Text = "در حال حاضر هیچ ایمیل دریافتی ای ندارید";
-
-                    }
+                    TrashGridView.DataSource = receivedMessages;
+                    TrashGridView.DataBind();
                 }
                 else
                 {
                     return;
                 }
-
             }
         }
 
-        protected void InboxGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void TrashGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Select")
             {
                 int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = InboxGridView.Rows[index];
+                GridViewRow row = TrashGridView.Rows[index];
 
                 // دسترسی به مقادیر ستون‌های دیتاگرید
                 string messageId = row.Cells[0].Text;
 
                 // پاس دادن مقدار به صفحه جدید
-                Response.Redirect("MessageDetails.aspx?messageId=" + messageId);
+                Response.Redirect("TrashDetails.aspx?messageId=" + messageId);
 
             }
         }
 
-        protected void InboxGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void TrashGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            InboxGridView.PageIndex = e.NewPageIndex;
-            LoadInbox();
+            TrashGridView.PageIndex = e.NewPageIndex;
+            LoadTrash();
         }
 
         protected void SignOut(object sender, EventArgs e)

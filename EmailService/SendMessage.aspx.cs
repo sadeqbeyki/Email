@@ -54,15 +54,18 @@ namespace EmailService
 
             // validation
 
-            var chkExistUser = users.Where(u => u.UserName == SenderUserName.Text && u.UserName == ReceiverUserName.Text).Any();
+            
+            var isExistReceiver = users.Where(u => u.UserName == ReceiverUserName.Text).Any();
 
-
-            if (string.IsNullOrEmpty(SenderUserName.Text) || string.IsNullOrEmpty(ReceiverUserName.Text) || string.IsNullOrEmpty(Subject.Text) || string.IsNullOrEmpty(MessageText.Text))
+            if (string.IsNullOrEmpty(SenderUserName.Text)
+                || string.IsNullOrEmpty(ReceiverUserName.Text)
+                || string.IsNullOrEmpty(Subject.Text)
+                || string.IsNullOrEmpty(MessageText.Text))
             {
                 //return stat;
                 StatusMessage.Text = "تمام فیلد ها را پر کنید";
             }
-            else if (!chkExistUser)
+            else if (isExistReceiver == false)
             {
                 StatusMessage.Text = "این کاربر موجود نیست";
                 StatusMessage.Visible = true;
@@ -70,7 +73,6 @@ namespace EmailService
             }
             else
             {
-
                 Message newMessage = new Message();
                 newMessage.SenderUsername = SenderUserName.Text;
                 newMessage.ReceiverUsername = selectedReceiverUsername;

@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace EmailService
 {
-    public partial class MessageDetails : System.Web.UI.Page
+    public partial class TrashDetails : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -57,7 +57,7 @@ namespace EmailService
             Response.Redirect("~/Login.aspx");
         }
 
-        protected void DeleteMessage(object sender, EventArgs e)
+        protected void RecoverMessage(object sender, EventArgs e)
         {
             string messageIdString = Request.QueryString["messageId"];
 
@@ -70,10 +70,10 @@ namespace EmailService
                 {
                     var message = context.Messages.FirstOrDefault(m => m.MessageId == messageId);
 
-                    if (message != null && message.IsDeletedInbox == false)
+                    if (message != null && message.IsDeletedInbox)
                     {
                         //context.Messages.Remove(message);
-                        message.IsDeletedInbox = true;
+                        message.IsDeletedInbox = false;
                         context.SaveChanges();
                         Response.Redirect("~/Inbox.aspx");
                     }

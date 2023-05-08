@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MessageDetails.aspx.cs" Inherits="EmailService.MessageDetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TrashDetails.aspx.cs" Inherits="EmailService.TrashDetails" %>
 
 <!DOCTYPE html>
 
@@ -20,7 +20,7 @@
                     </p>
                     <hr />
                     <asp:Button runat="server" OnClick="SignOut" Text="خروج" class="btn btn-circle btn-dark text-white"></asp:Button>
-                    <asp:Button runat="server" OnClick="DeleteMessage" Text="حذف" class="btn btn-circle btn-danger text-white"></asp:Button>
+                    <asp:Button runat="server" OnClick="RecoverMessage" Text="بازگردانی" class="btn btn-circle btn-success text-white"></asp:Button>
 
                     <dl class="dl-horizontal">
                         <dt>Sender:</dt>

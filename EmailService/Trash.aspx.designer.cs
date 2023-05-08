@@ -11,7 +11,7 @@ namespace EmailService
 {
 
 
-    public partial class Inbox
+    public partial class Trash
     {
 
         /// <summary>
@@ -33,12 +33,12 @@ namespace EmailService
         protected global::System.Web.UI.WebControls.Label StatusText;
 
         /// <summary>
-        /// InboxGridView control.
+        /// TrashGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView InboxGridView;
+        protected global::System.Web.UI.WebControls.GridView TrashGridView;
     }
 }

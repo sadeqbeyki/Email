@@ -37,7 +37,7 @@
                                         <li class="header">پوشه ها</li>
                                         <li class="active"><a href="./Inbox.aspx"><i class="fa fa-inbox"></i>صندوق ورودی</a></li>
                                         <li><a href="./Sendbox.aspx"><i class="fa fa-mail-forward"></i>ارسالی ها</a></li>
-                                        <li><a href="./Deleted.aspx"><i class="fa fa-folder"></i>حذف شده ها</a></li>
+                                        <li><a href="./Trash.aspx"><i class="fa fa-folder"></i>حذف شده ها</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -68,11 +68,16 @@
                                 <div class="col-md-9">
                                     <div class="table-responsive">
                                         <form id="form1" runat="server">
+                                            <div style="float:right">
+                                                <asp:Button runat="server" OnClick="SignOut" Text="خروج" class="btn btn-circle btn-dark text-white "></asp:Button>
+                                            </div>
+                                            <asp:Label ID="StatusText" runat="server" />
+                                            <hr />
 
                                             <div>
                                                 <asp:GridView ID="InboxGridView" runat="server"
                                                     AutoGenerateColumns="false" OnRowCommand="InboxGridView_RowCommand"
-                                                    AllowPaging="True" PageSize="2" OnPageIndexChanging="InboxGridView_PageIndexChanging"
+                                                    AllowPaging="True" PageSize="5" OnPageIndexChanging="InboxGridView_PageIndexChanging"
                                                     class="table table-bordered table-condensed table-responsive table-hover ">
                                                     <Columns>
                                                         <asp:BoundField DataField="MessageId" HeaderText="ردیف" />
@@ -88,7 +93,7 @@
                                             </div>
                                             <br />
                                             <br />
-                                            <asp:Button runat="server" OnClick="SignOut" Text="خروج" class="btn btn-circle btn-danger text-white"></asp:Button>
+
 
                                         </form>
                                     </div>
