@@ -24,10 +24,8 @@ namespace EmailService
                 {
                     StatusText.Text = string.Format("Hello {0}!!", User.Identity.GetUserName());
                     LoginStatus.Visible = true;
-                    LogoutButton.Visible = true;
+                    //LogoutButton.Visible = true;
                     SenderUserName.Text = User.Identity.GetUserName();
-
-
                 }
                 else
                 {
@@ -53,15 +51,26 @@ namespace EmailService
 
             var receiver = users.FirstOrDefault(u => u.UserName == selectedReceiverUsername);
 
+
             // validation
-            if (string.IsNullOrEmpty(SenderUserName.Text) || string.IsNullOrEmpty(ReceiverUserName.Text) || string.IsNullOrEmpty(MessageText.Text))
+
+            var chkExistUser = users.Where(u => u.UserName == SenderUserName.Text && u.UserName == ReceiverUserName.Text).Any();
+
+
+            if (string.IsNullOrEmpty(SenderUserName.Text) || string.IsNullOrEmpty(ReceiverUserName.Text) || string.IsNullOrEmpty(Subject.Text) || string.IsNullOrEmpty(MessageText.Text))
             {
                 //return stat;
                 StatusMessage.Text = "تمام فیلد ها را پر کنید";
             }
+            else if (!chkExistUser)
+            {
+                StatusMessage.Text = "این کاربر موجود نیست";
+                StatusMessage.Visible = true;
+
+            }
             else
             {
-   
+
                 Message newMessage = new Message();
                 newMessage.SenderUsername = SenderUserName.Text;
                 newMessage.ReceiverUsername = selectedReceiverUsername;
