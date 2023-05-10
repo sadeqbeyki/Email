@@ -12,11 +12,10 @@
 
     <link href="Content/Site.css" rel="stylesheet" type="text/css" />
 
-    <title>صندوق دریافت</title>
+    <title>حذفیات</title>
 
 </head>
 <body style="font-family: Tahoma; font-size: small" class="text-center">
-
 
     <div class="container">
         <div class="row">
@@ -25,14 +24,14 @@
                     <div class="grid-body">
                         <div class="row">
                             <div class="col-md-3">
-                                <h2 class="grid-title"><i class="fa fa-inbox"></i>صندوق دریافت</h2>
+                                <h2 class="grid-title"><i class="fa fa-inbox"></i>حذفیات</h2>
                                 <a href="SendMessage.aspx" class="btn btn-block btn-primary"><i class="fa fa-pencil"></i>&nbsp;&nbsp;ایجاد پیام جدید</a>
 
                                 <hr />
 
                                 <div>
                                     <ul class="nav nav-pills nav-stacked">
-                                        <li class="header">پوشه ها</li>
+                                        <li class="header bg-info">پوشه ها</li>
                                         <li><a href="./Inbox.aspx"><i class="fa fa-inbox"></i>صندوق ورودی</a></li>
                                         <li><a href="./Sendbox.aspx"><i class="fa fa-mail-forward"></i>ارسالی ها</a></li>
                                         <li class="active"><a href="./Trash.aspx"><i class="fa fa-folder"></i>حذف شده ها</a></li>

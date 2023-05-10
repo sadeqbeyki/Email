@@ -28,6 +28,7 @@
                             <div class="card-body py-5 px-md-5">
 
                                 <form id="form1" runat="server">
+                                    <br />
                                     <div>
                                         <p>
                                             <asp:Literal runat="server" ID="StatusMessage" />
@@ -42,6 +43,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <br />
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
@@ -52,6 +54,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <br />
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
@@ -62,6 +65,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <br />
+                                        
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">

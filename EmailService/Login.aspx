@@ -5,45 +5,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>ورود</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <%--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />--%>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet" />
 
 </head>
 <body style="font-family: Tahoma; font-size: small">
-    <div class="row align-items-center" style="height: 100vh;">
-        <div class="mx-auto col-10 col-md-8 col-lg-6">
-            <form id="form1" runat="server">
-                <div class="text-center">
+    <div class="h-100 d-flex align-items-center justify-content-center text-center">
 
-                    <asp:PlaceHolder runat="server" ID="LoginStatus" Visible="false">
-                        <p>
-                            <asp:Literal runat="server" ID="StatusText" />
-                        </p>
-                    </asp:PlaceHolder>
-                    <asp:PlaceHolder runat="server" ID="LoginForm" Visible="false">
+        <form id="form1" runat="server">
 
-                        <div class="row">
-                            <div class="col-md-4 ">
-                                <div class="form-outline ">
-                                    <asp:Label runat="server" AssociatedControlID="UserName" class="form-label">ایمیل</asp:Label>
-                                    <div>
-                                        <asp:TextBox runat="server" ID="UserName" class="form-control" />
-                                    </div>
-                                </div>
+            <hr />
+            <asp:PlaceHolder runat="server" ID="LoginStatus" Visible="false">
+                <p>
+                    <asp:Literal runat="server" ID="StatusText" />
+                </p>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder runat="server" ID="LoginForm" Visible="false">
+
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div class="form-outline ">
+                            <asp:Label runat="server" AssociatedControlID="UserName" class="form-label">ایمیل</asp:Label>
+                            <div>
+                                <asp:TextBox runat="server" ID="UserName" class="form-control" />
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4 mb-4">
-                                <div class="form-outline mb-4">
-                                    <asp:Label runat="server" AssociatedControlID="Password" class="form-label">پسورد</asp:Label>
-                                    <div>
-                                        <asp:TextBox runat="server" ID="Password" TextMode="Password" class="form-control" />
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mb-12">
+                        <div class="form-outline mb-12">
+                            <asp:Label runat="server" AssociatedControlID="Password" class="form-label">پسورد</asp:Label>
+                            <div>
+                                <asp:TextBox runat="server" ID="Password" TextMode="Password" class="form-control" />
                             </div>
                         </div>
+                    </div>
+                </div>
 
 
-                        <%--                <!-- 2 column grid layout for inline styling -->
+                <%--                <!-- 2 column grid layout for inline styling -->
                 <div class="row mb-4">
                     <div class="col d-flex justify-content-center">
                         <!-- Checkbox -->
@@ -58,30 +59,34 @@
                         <a href="#!">Forgot password?</a>
                     </div>
                 </div>--%>
+                    <hr />
+                   
 
-                        <div class="row">
-                            <div class="col-md-4 mb-4">
-                                <div class="form-outline mb-4">
-                                    <div>
-                                        <asp:Button runat="server" OnClick="SignIn" Text="ورود" class="btn btn-primary btn-block mb-4" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>هنوز عضو نشدید؟ <a href="./register.aspx">ثبت نام</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </asp:PlaceHolder>
-                    <asp:PlaceHolder runat="server" ID="LogoutButton" Visible="false">
-                        <div>
+                <div class="row">
+                    <div class="col-md-12 mb-12">
+                        <div class="form-outline mb-12">
                             <div>
-                                <asp:Button runat="server" OnClick="SignOut" Text="Log out" class="btn btn-primary btn-block mb-4" />
+                                <asp:Button runat="server" OnClick="SignIn" Text="ورود" class="btn btn-primary btn-block mb-4" />
                             </div>
                         </div>
-                    </asp:PlaceHolder>
+                        <div>
+                            <p>هنوز عضو نشدید؟ <a href="./register.aspx">ثبت نام</a></p>
+                        </div>
+                    </div>
                 </div>
-            </form>
-        </div>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder runat="server" ID="LogoutButton" Visible="false">
+                <div>
+                    <div>
+                        <asp:Button runat="server" OnClick="SignOut" Text="Log out" class="btn btn-primary btn-block mb-4" />
+                    </div>
+                </div>
+            </asp:PlaceHolder>
+                    <hr />
+
+        </form>
     </div>
+
+
 </body>
 </html>

@@ -34,7 +34,7 @@
 
                                 <div>
                                     <ul class="nav nav-pills nav-stacked">
-                                        <li class="header">پوشه ها</li>
+                                        <li class="header bg-info">پوشه ها</li>
                                         <li class="active"><a href="./Inbox.aspx"><i class="fa fa-inbox"></i>صندوق ورودی</a></li>
                                         <li><a href="./Sendbox.aspx"><i class="fa fa-mail-forward"></i>ارسالی ها</a></li>
                                         <li><a href="./Trash.aspx"><i class="fa fa-folder"></i>حذف شده ها</a></li>
@@ -93,8 +93,6 @@
                                             </div>
                                             <br />
                                             <br />
-
-
                                         </form>
                                     </div>
 

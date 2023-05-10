@@ -158,6 +158,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="SendDetails.aspx" />
     <Content Include="TrashDetails.aspx" />
     <Content Include="Trash.aspx" />
     <Content Include="Inbox.aspx" />
@@ -253,6 +254,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="SendDetails.aspx.cs">
+      <DependentUpon>SendDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SendDetails.aspx.designer.cs">
+      <DependentUpon>SendDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="TrashDetails.aspx.cs">
       <DependentUpon>TrashDetails.aspx</DependentUpon>

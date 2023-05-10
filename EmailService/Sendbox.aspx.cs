@@ -33,11 +33,23 @@ namespace EmailService
                 if (currentUser != null)
                 {
                     var receivedMessages = context.Messages
-                        .Where(msg => msg.SenderId == currentUser.Id/* && !msg.IsDeletedSendbox*/)
-                        .OrderByDescending(m => m.SentDate).ToList();
+                    .Where(msg => msg.SenderId == currentUser.Id && msg.IsDeletedSendbox == false)
+                    .OrderByDescending(m => m.SentDate).ToList();
 
-                    SendboxGridView.DataSource = receivedMessages;
-                    SendboxGridView.DataBind();
+                    if (receivedMessages.Count != 0)
+                    {
+                        SendboxGridView.DataSource = receivedMessages;
+                        SendboxGridView.DataBind();
+                    }
+                    else
+                    {
+                        StatusText.Text = "در حال حاضر هیچ ایمیل ارسال نکرده اید";
+
+                    }
+                }
+                else
+                {
+                    return;
                 }
             }
         }
@@ -54,7 +66,7 @@ namespace EmailService
                 string messageId = row.Cells[0].Text;
 
                 // پاس دادن مقدار به صفحه جدید
-                Response.Redirect("MessageDetails.aspx?messageId=" + messageId);
+                Response.Redirect("SendDetails.aspx?messageId=" + messageId);
 
             }
         }
